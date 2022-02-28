@@ -35,4 +35,4 @@ def contact(request):
     title = "о нас"
     visit_date = datetime.datetime.now()
     content = {"title": title, "visit_date": visit_date}
-    return render(request, "mainapp/contact.html", content)er(request, "mainapp/contact.html")
+    return render(request, "mainapp/contact.html", content)
