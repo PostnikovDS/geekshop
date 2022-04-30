@@ -22,7 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-a(0coas9ht^*)ubq=b5_zw@28vp%^lml6td03oiut=5b7g5h@y"
+SECRET_KEY = (
+    "django-insecure-a(0coas9ht^*)ubq=b5_zw@28vp%^lml6td03oiut=5b7g5h@y"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     "basketapp",
     "adminapp",
     "social_django",
+    "ordersapp",
 ]
 
 
@@ -73,6 +76,7 @@ TEMPLATES = [
                 "mainapp.context_processors.basket",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -182,7 +186,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-with open(os.path.join(BASE_DIR, "tmp", "secrets", "github.json"), "r") as secrets:
+with open(
+    os.path.join(BASE_DIR, "tmp", "secrets", "github.json"), "r"
+) as secrets:
     github_auth = json.load(secrets)
 
 SOCIAL_AUTH_GITHUB_KEY = github_auth["client_id"]
